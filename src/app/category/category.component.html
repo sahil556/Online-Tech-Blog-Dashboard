@@ -1,18 +1,58 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 bg-theme-secondary p-5 shadow-effect">
-            <h3 class="text-center text-theme-primary">New Categories</h3>
-            <p class="text-center mb-5">you can add new category from here...!</p>
+            <h3 class="text-center text-theme-primary">{{formStatus}} Categories</h3>
+            <p class="text-center mb-5">you can {{formStatus}} new category from here...!</p>
             <form  class="form-inline text-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm)">
             <div class="row">
                 <div class="col-md-10">
-                    <input type="text" ngModel name="category" class="form-control shadow-effect" placeholder="Enter a new Category" id="">
+                    <input 
+                    type="text" 
+                    [(ngModel)]="formCategory"
+                    #newCategory="ngModel"
+                    required
+                    [ngClass]="{'is-invalid':newCategory.touched && newCategory.invalid}" 
+                    name="category" 
+                    class="form-control shadow-effect" 
+                    placeholder="Enter a new Category" id="">
+                    <div class="alert alert-danger" *ngIf="newCategory.touched && newCategory.invalid">
+                    Category field is required
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-info btn-block mb-2">Add Category</button>
+                <div class="col-md-2" >
+                    <button class="btn btn-info btn-block mb-2" [disabled]="newCategory.invalid">{{formStatus}} Category</button>
                 </div>
             </div>
             </form>
         </div>
+    </div>
+    <div class="row mt-5 mb-5">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table row-border hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Category</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cate of categoryArray; let i = index" >
+                                <td>{{i+1}}</td>
+                                <td>{{ cate.data.category}}</td>
+                                <td>
+                                    <button class="btn btn-sm btn-warning" (click)="onEdit(cate.data.category, cate.id)">Edit</button>&nbsp;
+                                    <button class="btn btn-sm btn-danger" (click)="onDelete(cate.id)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </div>

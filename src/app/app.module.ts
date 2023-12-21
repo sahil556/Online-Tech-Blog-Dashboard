@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import {AngularFireModule} from '@angular/fire/compat';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
+import { ToastrModule} from 'ngx-toastr';
 import { environment } from 'src/environments/environment.prod';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,14 +19,16 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
-    CategoryComponent
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],  
   providers: [],
   bootstrap: [AppComponent]
