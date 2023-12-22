@@ -2,4 +2,10 @@
     <div class="container justify-content-center">
         <a href="#" class="site-logo">TECH-BLOG</a>
     </div>
+    <!-- added pipe async to continuously watch the islogged in-->
+    <div class="container justify-content-center" *ngIf="isLoggedin$ | async" >
+        <a href="#" class="mr-3 nav-link">{{user}}</a>&nbsp; &nbsp; 
+        <button class="btn btn-sm btn-info bg-theme-secondary text-theme-primary" (click)="onLogout()">Logout</button>
+    </div>
+
 </header>
