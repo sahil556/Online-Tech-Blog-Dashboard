@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import { LoginComponent } from './auth/login/login.component';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SubscribersComponent } from './subscribers/subscribers.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     AllPostComponent,
     NewPostComponent,
     LoginComponent,
+    SubscribersComponent,
   ],
   imports: [
     BrowserModule,
